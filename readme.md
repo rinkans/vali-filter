@@ -38,8 +38,33 @@ Module that filters and validates data
     
     if(data.invalid)
     	return console.log('errors', data.errorResponse());
+    /**
+     ** @returns:
+        {
+            status: 'failed',
+            errors: {
+                j: [
+                    'j is not an JSON'
+                ]
+            }
+        }
+    **/
     
     console.log('data', data);
+    /**
+     ** @returns if all data was correct:
+        {
+            name: 'Rinalds',
+            surname: 'Zukulis',
+            age: 20,
+            cards: '',
+            group: '',
+            agreed: true,
+            agreedOn: '2015-01-01T05:06:07',
+            password: 'rerere',
+            j: '{"name":"Rinalds"}'
+        }
+    **/
 
 ### Validators
 All validator names are the same as [laravels](http://laravel.com/docs/5.1/validation)
