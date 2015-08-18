@@ -1,0 +1,24 @@
+{
+  "name": "vali-filter",
+  "version": "1.0.0",
+  "description": "Module that filters and validates objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rinkans/vali-filter.git"
+  },
+  "keywords": [
+    "validator",
+    "validation",
+    "filter"
+  ],
+  "author": "Rinalds Zukulis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rinkans/vali-filter/issues"
+  },
+  "homepage": "https://github.com/rinkans/vali-filter"
+}
