@@ -134,14 +134,16 @@ function errorResponse() {
 }
 
 module.exports = function(options) {
-	if(options.extraRules) {
-		Object.keys(options.extraRules).forEach(function(validatorName) {
-			validators[validatorName] = options.extraRules[validatorName];
-		});
-	}
+	if(options) {
+		if(options.extraRules) {
+			Object.keys(options.extraRules).forEach(function(validatorName) {
+				validators[validatorName] = options.extraRules[validatorName];
+			});
+		}
 
-	if(options.errorMessages) {
-		errorMessages = options.errorMessages;
+		if(options.errorMessages) {
+			errorMessages = options.errorMessages;
+		}
 	}
 
 	return validateObject;

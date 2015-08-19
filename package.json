@@ -13,7 +13,9 @@
   "keywords": [
     "validator",
     "validation",
-    "filter"
+    "filter",
+    "laravel",
+    "rules"
   ],
   "author": "Rinalds Zukulis",
   "license": "ISC",
