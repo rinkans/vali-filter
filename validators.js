@@ -84,7 +84,7 @@ module.exports = {
 	},
 
 	max: function(value, argument) {
-		if(typeof value == 'string')
+		if(typeof value == 'string' || Array.isArray(value))
 			return value.length <= parseInt(argument);
 		else
 			return parseFloat(value) <= parseInt(argument);	
@@ -93,7 +93,7 @@ module.exports = {
 	// 	return true; // 'photo' => 'mimes:jpeg,bmp,png'
 	// },
 	min: function(value, argument) {
-		if(typeof value == 'string')
+		if(typeof value == 'string' || Array.isArray(value))
 			return value.length >= parseInt(argument);
 		else
 			return parseFloat(value) >= parseInt(argument);
@@ -112,7 +112,7 @@ module.exports = {
 		return (new RegExp(argument)).test(value);
 	},
 	required: function(value, argument) {
-		return value != undefined && value != null && value.length != 0;
+		return !(value == undefined || value == null);
 	},
 
 	/*
@@ -145,7 +145,7 @@ module.exports = {
 		return value == v;
 	},
 	size: function(value, value) {
-		if(typeof value == 'string')
+		if(typeof value == 'string' || Array.isArray(value))
 			return value.length == parseInt(argument);
 		else
 			return parseFloat(value) == parseInt(argument);	

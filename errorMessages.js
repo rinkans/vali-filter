@@ -41,5 +41,7 @@ module.exports = {
 	timezone: ':property should be a timezone',
 	url: ':property should be an url',
 	
+	object: ':property is not an object',
+	array: ':property is not an array',
 	
 }
