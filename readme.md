@@ -1,95 +1,69 @@
 # vali-filter
 
 Module that filters and validates data.
-When you validate object, only properties with rules will be returnes/
+
+## Features
+	* Validate deeply nested data
+	* validate lists
+	* validate strings
+	* return data that is ready to be inserted into the database!
+    * Almost all Laravel validators implemented (more to come)
 
 ## Example:
-    var validator = require('vali-filter');
-    
-    var validate = validator({
-        errorMessages: null,
-        extraRules: null
-    });
+```js
+var body = {
+	info: {
+		name: 'Rinalds',
+		surname: 'Zukulis',
+		age: 20
+	},
+	cards: [1,3,4,5,3,2,14,12,21,2,23],
+	group: [
+		{
+			name: 'janis',
+			evil: 'yes'
+		},
+		{
+			name: 'peteris',
+			evil: 'yes'
+		},
+		{
+			name: 'juris',
+			evil: 'yes'
+		},
+	],
+	agreed: true,
+	agreedOn: '2015-01-01T05:06:07',
+	password: 'rerere',
+	password_confirmation: 'rerere',
+	j: '{"name":"Rinalds"}'
+}
 
-    validate({
-        name: 'Rinalds',
-        dangerCode: '; DROP table'
-    }, {
-        name: 'required|alphanum',
-        surname: 'alphanum'
-    });
+var data = validate(body, {
+	info: {
+		name: 'required|alpha_num|min:2|max:10',
+		surname: 'required|alpha_num|min:2|max:10',
+		age: 'integer|digits_between:2,3',
+	},
+	cards: ['required|min:2|max:15', 'integer|max:200'],
+	group: ['required|min:2|max:15', {
+		name: 'required|integer'
+	}],
+	agreed: 'required|accepted',
+	agreedOn: 'required|date',
+	password: 'required|confirmed|in:rerere,rer,asdasd',
+	j: 'required|json'
+});
 
-    @returns
-    {
-        name: 'Rinalds',
-        surname: ''
-    }
+if(data.invalid)
+	return console.log(data.errors);
 
+console.log(data);
+```
 
-
-### How to use
-
-    var validator = require('vali-filter');
-    
-    var validate = validator({
-    	errorMessages: null,
-    	extraRules: null
-    });
-    
-    var body = {
-    	name: 'Rinalds',
-    	surname: 'Zukulis',
-    	age: 20,
-    	cards: '',
-    	group: null,
-    	agreed: true,
-    	agreedOn: '2015-01-01T05:06:07',
-    	password: 'rerere',
-    	password_confirmation: 'rerere',
-    	j: '{"name";:"Rinalds"}'
-    }
-    
-    var data = validate(body, {
-    	name: 'required|alpha_num|min:2|max:10',
-    	surname: 'required|alpha_num|min:2|max:10',
-    	age: 'integer|digits_between:2,3',
-    	cards: 'integer',
-    	group: 'integer',
-    	agreed: 'required|accepted',
-    	agreedOn: 'required|date',
-    	password: 'required|confirmed|in:rerere,rer,asdasd',
-    	j: 'required|json'
-    });
-    
-    if(data.invalid)
-    	return console.log('errors', data.errorResponse());
-    /**
-     ** @returns:
-        {
-            status: 'failed',
-            errors: {
-                j: [
-                    'j is not an JSON'
-                ]
-            }
-        }
-    **/
-    
-    console.log('data', data);
-    /**
-     ** @returns if all data was correct:
-        {
-            name: 'Rinalds',
-            surname: 'Zukulis',
-            age: 20,
-            cards: '',
-            group: '',
-            agreed: true,
-            agreedOn: '2015-01-01T05:06:07',
-            password: 'rerere',
-            j: '{"name":"Rinalds"}'
-        }
-    **/
-
-### Validators
-All validator names are the same as [laravels](http://laravel.com/docs/5.1/validation)
+## Installation
+```bash
+$ npm install vali-filter
+```
+## Docs & Community
+  * [validators](http://laravel.com/docs/5.1/validation)
