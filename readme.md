@@ -1,10 +1,35 @@
 # vali-filter
 
-Module that filters and validates data
+Module that filters and validates data.
+When you validate object, only properties with rules will be returnes/
+
+## Example:
+    var validator = require('vali-filter');
+    
+    var validate = validator({
+        errorMessages: null,
+        extraRules: null
+    });
+
+    validate({
+        name: 'Rinalds',
+        dangerCode: '; DROP table'
+    }, {
+        name: 'required|alphanum',
+        surname: 'alphanum'
+    });
+
+    @returns
+    {
+        name: 'Rinalds',
+        surname: ''
+    }
+
+
 
 ### How to use
 
-    var validator = require('./index');
+    var validator = require('vali-filter');
     
     var validate = validator({
     	errorMessages: null,
