@@ -3,11 +3,11 @@
 Module that filters and validates data.
 
 ## Features
-	* Validate deeply nested data
-	* validate lists
-	* validate strings
-	* return data that is ready to be inserted into the database!
-    * Almost all Laravel validators implemented (more to come)
+  * Validate deeply nested data
+  * validate lists
+  * validate strings
+  * return data that is ready to be inserted into the database!
+  * Almost all Laravel validators implemented (more to come)
 
 ## Example:
 ```js
