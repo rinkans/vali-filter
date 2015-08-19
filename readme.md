@@ -66,4 +66,4 @@ console.log(data);
 $ npm install vali-filter
 ```
 ## Docs & Community
-	* [validators](http://laravel.com/docs/5.1/validation)
+  * [validators](http://laravel.com/docs/5.1/validation)
