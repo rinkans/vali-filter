@@ -15,6 +15,10 @@ module.exports = {
 		return /^[A-z0-9]+$/.test(value);
 	},
 
+	simple_text: function(value, argument) {
+		return /^[A-z0-9\ \-\_]+$/.test(value);
+	},
+
 
 	before: function(value, argument) {
 		return Date.parse(value) < Date.parse(argument);
@@ -57,9 +61,10 @@ module.exports = {
 		return /^.+@.+$/.test(value);
 	},
 
-	// image: function(value) {
-	// 	return true; // jpeg, png, bmp, gif, or svg
-	// },
+	image: function(value) {
+		return true; // jpeg, png, bmp, gif, or svg
+	},
+	
 	in: function(value, argument) {
 		return argument.split(',').some(function(v) {
 			return value == v;
