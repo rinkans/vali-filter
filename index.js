@@ -40,6 +40,9 @@ function validateRuleString(value, ruleString, property, data) {
 		var v = (rule == 'different')? data[argument] : v;
 		var v = (rule == 'same')? data[argument] : v;
 
+		if(!validators[rule])
+			throw new Error('No such validator "' + rule + '"');
+
 		if(!validators[rule](value, argument, v)) {
 			errors.push(createErrorMessage(rule, property, argument));
 		}

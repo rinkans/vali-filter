@@ -110,7 +110,7 @@ module.exports = {
 		});
 	},
 	numeric: function(value) {
-		/^([0-9]+\.?)+$/.test(value);
+		return /^([0-9]+\.?)+$/.test(value);
 	},
 
 	regex: function(value, argument) {
@@ -163,5 +163,9 @@ module.exports = {
 	},
 	url: function(value) {
 		return /^http.+$/.test(value);
+	},
+
+	color: function(value) {
+		return /^#[0-9a-fA-F]+$/.test(value);
 	}
 }
