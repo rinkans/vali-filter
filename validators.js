@@ -16,7 +16,7 @@ module.exports = {
 	},
 
 	simple_text: function(value, argument) {
-		return /^[A-z0-9\ \-\_]+$/.test(value);
+		return /^[A-z0-9\ \-\_\,\.]+$/.test(value);
 	},
 
 
@@ -28,7 +28,7 @@ module.exports = {
 		var max = min[1];
 		min = min[0];
 
-		return validators['min'](value, min) && validators['max'](value, max);
+		return this['min'](value, min) && this['max'](value, max);
 	},
 	boolean: function(value) {
 		return value == true || value == false || value == '1' || value == '0' || value == 1 || value == 0;
@@ -89,19 +89,21 @@ module.exports = {
 	},
 
 	max: function(value, argument) {
-		if(typeof value == 'string' || Array.isArray(value))
-			return value.length <= parseInt(argument);
-		else
+		if(!isNaN(value))
 			return parseFloat(value) <= parseInt(argument);	
+		else
+			return value.length <= parseInt(argument);
+		
 	},
 	// mimes: function() {
 	// 	return true; // 'photo' => 'mimes:jpeg,bmp,png'
 	// },
 	min: function(value, argument) {
-		if(typeof value == 'string' || Array.isArray(value))
-			return value.length >= parseInt(argument);
-		else
+		if(!isNaN(value))
 			return parseFloat(value) >= parseInt(argument);
+		else
+			return value.length >= parseInt(argument);
+		
 	},
 
 	not_in: function(value, argument) {

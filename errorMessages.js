@@ -5,6 +5,8 @@ module.exports = {
 	alpha_dash: ':property can only consist of letters, numbers, dashes or undersocore',
 	alpha_num: ':property can only consist of letters and numbers',
 
+	simple_text: ':property can only consist plain text',
+
 	before: ':property is not before :argument',
 	between: ':property should be lower or equal than :argument_1 and higher or equal than :argument_2',
 	boolean: ':property is neither true, false, 0 or 1',

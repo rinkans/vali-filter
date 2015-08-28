@@ -2,6 +2,8 @@ var validators = require('./validators');
 var errorMessages = require('./errorMessages');
 
 function createErrorMessage(rule, property, argument) {
+	if(!errorMessages[rule])
+		throw new Error('No error message for ' + rule);
 	var errorMessage = errorMessages[rule].replace(':property', property).replace(':argument', argument);
 
 	if(argument && argument.indexOf(',') != -1) {
