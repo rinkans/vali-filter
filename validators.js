@@ -16,7 +16,7 @@ module.exports = {
 	},
 
 	simple_text: function(value, argument) {
-		return /^[A-z0-9\ \-\_\,\.]+$/.test(value);
+		return !(/\<\/?[A-z]+\>/.test(value));
 	},
 
 
