@@ -19,7 +19,6 @@ module.exports = {
 		return !(/\<\/?[A-z]+\>/.test(value));
 	},
 
-
 	before: function(value, argument) {
 		return Date.parse(value) < Date.parse(argument);
 	},
@@ -37,6 +36,10 @@ module.exports = {
 
 	confirmed: function(value, argument, v) {
 		return value == v;
+	},
+
+	csv: function(value, argument) {
+		return /^[\_\-A-z0-9ēūīļķģšāžčņĒŪĪĻĶĢŠĀŽČŅ\,]+$/.test(value);
 	},
 
 
