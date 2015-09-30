@@ -39,6 +39,8 @@ var body = {
 	j: '{"name":"Rinalds"}'
 }
 
+var validate = require('vali-filter')();
+
 var data = validate(body, {
 	info: {
 		name: 'required|alpha_num|min:2|max:10',
