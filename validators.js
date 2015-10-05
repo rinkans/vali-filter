@@ -122,7 +122,7 @@ module.exports = {
 		return (new RegExp(argument)).test(value);
 	},
 	required: function(value, argument) {
-		return !(value == undefined || value == null);
+		return !(value == undefined || value == null || value == '');
 	},
 
 	/*
