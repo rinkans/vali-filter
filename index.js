@@ -4,7 +4,12 @@ var errorMessages = require('./errorMessages');
 function createErrorMessage(rule, property, argument) {
 	if(!errorMessages[rule])
 		throw new Error('No error message for ' + rule);
+
+	property = property.replace(/([A-Z0-9])/g, ' $1').toLowerCase();
+
 	var errorMessage = errorMessages[rule].replace(':property', property).replace(':argument', argument);
+	errorMessage = errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1);
+
 
 	if(argument && argument.indexOf(',') != -1) {
 		
@@ -30,7 +35,11 @@ function validateRuleString(value, ruleString, property, data) {
 		}
 	}
 
-	if(rules.indexOf('required') != -1)
+	if(rules.indexOf('simple_text') > -1) {
+		value = value.replace(/</gi, '&lt;').replace(/>/gi, '&gt;');
+	}
+
+	if(rules.indexOf('required') > -1)
 		rules.splice(rules.indexOf('required'), 1);
 
 	rules.forEach(function(rule) {

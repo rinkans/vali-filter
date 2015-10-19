@@ -63,6 +63,10 @@ if(data.invalid)
 console.log(data);
 ```
 
+## Note
+* rule "simple_text" not only validates but sanitizes html for XSS attacks. For example
+"```<script> alert("evil things") </script>```" will be sanitized to "```&lt;script&gt; alert("evil things") &lt;/script&lt;"```"
+
 ## Installation
 ```bash
 $ npm install vali-filter
