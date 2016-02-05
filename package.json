@@ -1,6 +1,6 @@
 {
   "name": "vali-filter",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Module that filters and validates objects",
   "main": "index.js",
   "scripts": {
