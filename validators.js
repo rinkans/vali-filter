@@ -122,7 +122,7 @@ module.exports = {
 		return (new RegExp(argument)).test(value);
 	},
 	required: function(value, argument) {
-		return !(value == undefined || value == null || value == '');
+		return !(value == undefined || value == null || value == '' || /^[ ]+$/g.test(value));
 	},
 
 	/*
@@ -172,5 +172,9 @@ module.exports = {
 
 	color: function(value) {
 		return /^#[0-9a-fA-F]+$/.test(value);
+	},
+
+	include: function() {
+		return true;
 	}
 }
